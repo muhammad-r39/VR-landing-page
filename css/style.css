@@ -26,7 +26,7 @@ header {
   width: 100%;
   z-index: 999;
   padding: 10px 0;
-  transition: padding 0.5s ease;
+  transition: padding 0.5s ease-in;
 }
 
 header::before {
@@ -37,7 +37,7 @@ header::before {
   right: 0;
   bottom: 0;
   background-color: rgb(0 0 0 / 0);
-  transition: all 0.5s ease;
+  transition: all 1s ease-out;
 }
 
 header.open,
@@ -48,7 +48,7 @@ header.sticky {
 header.open::before,
 header.sticky::before {
   background-color: #000;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .background-circle {
@@ -131,7 +131,8 @@ header .container {
 
 .site-navigation nav {
   max-height: 0;
-  transition: all 0.5s ease;
+  height: 100vh;
+  transition: all 1s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -191,19 +192,19 @@ header .container {
   width: 100%;
   height: 4px;
   background-color: #fff;
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
-.site-navigation.open .menu-icon span:first-child {
+.open .menu-icon span:first-child {
   transform: rotate(-45deg) translateY(13px);
 }
 
-.site-navigation.open .menu-icon span:nth-child(2) {
+.open .menu-icon span:nth-child(2) {
   scale: 0;
   opacity: 0;
 }
 
-.site-navigation.open .menu-icon span:last-child {
+.open .menu-icon span:last-child {
   transform: rotate(45deg) translateY(-13px);
 }
 
@@ -535,6 +536,10 @@ h2 {
     padding: 33px 0;
   }
 
+  header::before {
+    transition: all 0.5s ease;
+  }
+
   header.sticky {
     padding: 10px 0;
   }
@@ -557,6 +562,7 @@ h2 {
 
   .site-navigation nav {
     max-height: none !important;
+    height: auto;
     flex-direction: row;
     align-items: center;
     gap: 0;

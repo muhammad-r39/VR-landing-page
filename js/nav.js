@@ -5,18 +5,20 @@ const menuIcon = document.querySelector(".menu-icon");
 
 menuIcon.addEventListener("click", function () {
   const nav = document.querySelector(".site-navigation nav");
-  const parent = document.querySelector(".site-navigation");
   const header = document.querySelector("header");
 
-  if (parent.classList.contains("open")) {
+  const deveiceHeight = window.innerHeight;
+
+  console.log(deveiceHeight);
+  if (header.classList.contains("open")) {
     // Set max-height to 0 to collapse
     nav.style.maxHeight = "0";
-    parent.classList.remove("open");
-    header.classList.remove("open");
+    setTimeout(() => {
+      header.classList.remove("open");
+    }, 500);
   } else {
     // Set max-height to scrollHeight to expand
-    nav.style.maxHeight = nav.scrollHeight + "px";
-    parent.classList.add("open");
+    nav.style.maxHeight = deveiceHeight - 56 + "px";
     header.classList.add("open");
   }
 });
