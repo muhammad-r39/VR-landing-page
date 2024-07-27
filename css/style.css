@@ -23,7 +23,7 @@ body {
 header {
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 999;
   padding: 10px 0;
   transition: padding 0.5s ease;
@@ -54,13 +54,13 @@ header.sticky::before {
 .background-circle {
   width: 900px;
   height: 760px;
+  max-width: 100%;
   display: inline-block;
   border-radius: 50%;
   background-image: radial-gradient(rgb(31 195 231 / 84%), #1f34e7 90%);
   filter: blur(150px);
   opacity: 0.6;
   position: absolute;
-  right: -25%;
   top: -20%;
   z-index: -1;
 }
@@ -245,9 +245,11 @@ header .container {
 }
 
 .hero-content {
+  position: relative;
   width: 520px;
   max-width: 100%;
   margin: auto;
+  z-index: 3;
 }
 
 .hero-content h1 {
@@ -264,6 +266,7 @@ header .container {
 .hero-graphic {
   position: relative;
   width: 520px;
+  max-width: 100%;
   margin: auto;
   padding-top: 100px;
   padding-bottom: 60px;
@@ -272,28 +275,36 @@ header .container {
 .hero-graphic .robo {
   position: relative;
   width: 400px;
+  max-width: 100%;
 }
 
 .hero-graphic .ring {
   position: absolute;
 }
 
+.hero-graphic .ring img {
+  max-width: 100%;
+}
+
 .hero-graphic .ring.r-1 {
-  top: 40px;
-  right: 60px;
+  width: 200px;
+  top: 10px;
+  right: 0;
 }
 
 .hero-graphic .ring.r-2 {
+  top: 70px;
   left: 0;
 }
 
 .hero-graphic .ring.r-3 {
-  top: 270px;
+  width: 60px;
+  top: 240px;
   left: 0;
 }
 
 .hero-graphic .ring.r-4 {
-  bottom: 70px;
+  bottom: 30px;
   left: 100px;
 }
 
@@ -387,7 +398,6 @@ h2 {
 
 #about .background-circle {
   top: -60%;
-  right: -60%;
   background-image: radial-gradient(rgb(31 195 231 / 84%), #1f34e7 85%);
   opacity: 0.6;
 }
@@ -462,6 +472,21 @@ h2 {
   margin-top: 0;
 }
 
+@media screen and (min-width: 400px) {
+  .hero-graphic {
+    padding-top: 130px;
+  }
+  .hero-graphic .ring.r-1 {
+    top: 40px;
+  }
+  .hero-graphic .ring.r-2 {
+    top: 100px;
+  }
+  .hero-graphic .ring.r-3 {
+    top: 300px;
+  }
+}
+
 @media screen and (min-width: 460px) {
   #home {
     padding-top: 150px;
@@ -480,7 +505,8 @@ h2 {
   }
 
   .hero-graphic .ring.r-1 {
-    right: -30px;
+    width: max-content;
+    top: 40px;
   }
 
   .hero-graphic .ring.r-2 {
@@ -488,6 +514,7 @@ h2 {
   }
 
   .hero-graphic .ring.r-3 {
+    width: auto;
     top: 250px;
     left: 20px;
   }
@@ -496,6 +523,10 @@ h2 {
 @media screen and (min-width: 560px) {
   .container.md {
     width: 530px;
+  }
+
+  .hero-graphic .ring.r-3 {
+    top: 300px;
   }
 }
 
@@ -556,6 +587,14 @@ h2 {
     font-size: 48px;
   }
 
+  .background-circle {
+    right: -25%;
+  }
+
+  #about .background-circle {
+    right: -60%;
+  }
+
   #about {
     padding-top: 100px;
   }
@@ -602,7 +641,7 @@ h2 {
 
   .hero-graphic {
     position: absolute;
-    top: 50px;
+    top: 100px;
     right: 10px;
     width: auto;
     padding: 0;
@@ -613,6 +652,7 @@ h2 {
     top: -110px;
     right: 0;
     width: 500px;
+    max-width: unset;
   }
 
   .hero-graphic .ring.r-1 {
@@ -621,18 +661,19 @@ h2 {
   }
 
   .hero-graphic .ring.r-2 {
-    top: -100px;
-    left: -550px;
+    top: -130px;
+    left: -500px;
   }
 
   .hero-graphic .ring.r-3 {
-    top: 20px;
-    left: -600px;
+    top: -35px;
+    left: -580px;
+    width: 75px;
   }
 
   .hero-graphic .ring.r-4 {
-    top: 190px;
-    left: -550px;
+    top: 180px;
+    left: -520px;
   }
 
   #home {
@@ -655,30 +696,39 @@ h2 {
     padding-bottom: 150px;
   }
 
+  .container.xxl {
+    width: 1064px;
+  }
+
   .hero-graphic {
-    top: 0;
+    top: 40px;
     right: 0;
     margin-top: 0;
   }
 
+  .hero-graphic .robo {
+    right: -40px;
+  }
+
   .hero-graphic .ring.r-1 {
     top: -180px;
-    left: -310px;
+    left: -200px;
   }
 
   .hero-graphic .ring.r-2 {
     top: -170px;
-    left: -680px;
+    left: -450px;
   }
 
   .hero-graphic .ring.r-3 {
     top: -80px;
-    left: -750px;
+    left: -530px;
+    width: auto;
   }
 
   .hero-graphic .ring.r-4 {
     top: 210px;
-    left: -680px;
+    left: -420px;
   }
 
   #services {
@@ -698,5 +748,34 @@ h2 {
 
   #contact {
     padding-top: 240px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container.xxl {
+    width: 1325px;
+  }
+
+  .hero-graphic {
+    right: 100px;
+  }
+
+  .hero-graphic .robo {
+    width: auto;
+  }
+
+  .hero-graphic .ring.r-2 {
+    top: -160px;
+    left: -600px;
+  }
+
+  .hero-graphic .ring.r-3 {
+    left: -680px;
+    top: -70px;
+  }
+
+  .hero-graphic .ring.r-4 {
+    top: 260px;
+    left: -560px;
   }
 }
